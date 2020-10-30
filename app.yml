@@ -1,0 +1,62 @@
+---
+ocean:
+  version: "1"
+snapshots:
+  - name: jupyter
+    registry: docker_hub
+    image: jupyter/scipy-notebook
+    tag: latest
+steps:
+  - engines:
+  - engines:
+    - name: jupyter
+      settings:
+        - name: mode
+          label: Jupyter Mode
+          style: dropdown
+          default_value: 'lab'
+          options:
+            - value: lab
+              label: 'Lab'
+            - value: notebook
+              label: 'Notebook'
+      vars:
+        - name: port
+          value: "{% reserve_public_port %}"
+        - name: token
+          value: "{% generate_uuid %}"
+      orchestrator:
+        deployment_strategy: main
+        snapshot_name: jupyter
+        container:
+          user: root
+          workdir: /work
+          mounts:
+            files:
+              - name: jupyter_startup
+                app_path: jupyter
+                container_path: /ocean/etc
+                readonly: true
+            data_stores: "{{ engines.jupyter.orchestrator.container.workdir }}"
+            ssh: "/home/{{ workspace.user.name }}/.ssh"
+          nodes:
+            main:
+              command: "{{ engines.jupyter.orchestrator.container.mounts.files.jupyter_startup.container_path }}/startup.sh"
+              env_vars:
+                - name: JUPYTER_ENABLE_LAB
+                  value: "{% if engines.jupyter.settings.mode == 'lab' %}yes{% else %}no{% endif %}"
+                - name: NB_UID
+                  value: "{{ workspace.user.uid }}"
+                - name: NB_GID
+                  value: "{{ workspace.user.gid }}"
+                - name: CHOWN_HOME
+                  value: "yes"
+                - name: GRANT_SUDO
+                  value: "yes"
+                - name: RESTARTABLE
+                  value: "yes"
+      ui:
+        buttons:
+          - node_target: main
+            label: Open Jupyter
+            url: "http://{{ engines.jupyter.ui.buttons.self.node.public_ip }}:{{ engines.jupyter.vars.port }}?token={{ engines.jupyter.vars.token }}"
