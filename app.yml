@@ -34,7 +34,7 @@ steps:
           mounts:
             app_files:
               - name: jupyter_startup
-                app_files_path: jupyter
+                app_files_path: /
                 container_path: /ocean/etc
                 readonly: true
             data_stores: "{{ engines.jupyter.orchestrator.container.workdir }}"
