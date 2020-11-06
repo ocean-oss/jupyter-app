@@ -8,7 +8,6 @@ snapshots:
     tag: latest
 steps:
   - engines:
-  - engines:
     - name: jupyter
       settings:
         - name: mode
