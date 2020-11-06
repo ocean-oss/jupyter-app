@@ -43,7 +43,7 @@ steps:
               command: "{{ engines.jupyter.orchestrator.container.mounts.app_files.jupyter_startup.container_path }}/startup.sh"
               env_vars:
                 - name: JUPYTER_ENABLE_LAB
-                  value: "{% if engines.jupyter.settings.mode == 'lab' %}yes{% else %}no{% endif %}"
+                  value: "\"{% if engines.jupyter.settings.mode == 'lab' %}yes{% else %}no{% endif %}\""
                 - name: NB_UID
                   value: "{{ workspace.user.uid }}"
                 - name: NB_GID
