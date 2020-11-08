@@ -12,7 +12,7 @@ steps:
       dns:
         enabled: true
         default_value: 'jupyter'
-        title: Jupyter URL
+        label: Jupyter URL
       settings:
         - name: mode
           label: Jupyter Mode
