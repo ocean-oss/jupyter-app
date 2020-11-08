@@ -9,6 +9,10 @@ snapshots:
 steps:
   - engines:
     - name: jupyter
+      dns:
+        enabled: true
+        default_value: 'jupyter'
+        title: Jupyter URL
       settings:
         - name: mode
           label: Jupyter Mode
@@ -62,4 +66,4 @@ steps:
         buttons:
           - node_target: main
             label: Open Jupyter
-            url: "http://{{ engines.jupyter.ui.buttons.self.node.public_ip }}:{{ engines.jupyter.vars.port }}?token={{ engines.jupyter.vars.token }}"
+            url: "http://{{ engines.jupyter.dns.url }}:{{ engines.jupyter.vars.port }}?token={{ engines.jupyter.vars.token }}"
