@@ -9,10 +9,11 @@ snapshots:
 steps:
   - engines:
     - name: jupyter
-      dns:
-        enabled: true
-        default_value: 'jupyter'
-        label: Jupyter URL
+      networking:
+        dns:
+          enabled: true
+          default_value: 'jupyter'
+          label: Jupyter URL
       settings:
         - name: mode
           label: Jupyter Mode
