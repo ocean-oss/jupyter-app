@@ -67,4 +67,4 @@ steps:
         buttons:
           - node_target: main
             label: Open Jupyter
-            url: "http://{{ engines.jupyter.dns.url }}:{{ engines.jupyter.vars.port }}?token={{ engines.jupyter.vars.token }}"
+            url: "http://{{ engines.jupyter.networking.dns.url }}:{{ engines.jupyter.vars.port }}?token={{ engines.jupyter.vars.token }}"
