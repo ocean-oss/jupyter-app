@@ -6,7 +6,7 @@ images:
     registry: docker_hub
     image: jupyter/scipy-notebook
     tag: latest
-    snapshottable: "false"
+    snapshottable: false
 steps:
   - engines:
     - name: jupyter
