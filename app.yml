@@ -42,7 +42,6 @@ steps:
                 container_path: /ocean/etc
                 readonly: true
             data_stores: "{{ engines.jupyter.orchestrator.container.workdir }}"
-            ssh: "/home/{{ workspace.user.name }}/.ssh"
           nodes:
             main:
               command: "{{ engines.jupyter.orchestrator.container.mounts.app_files.jupyter_startup.container_path }}/startup.sh"
