@@ -1,7 +1,7 @@
 ---
 ocean:
   version: "1"
-snapshots:
+images:
   - name: jupyter
     registry: docker_hub
     image: jupyter/scipy-notebook
