@@ -32,7 +32,7 @@ steps:
           value: "{% generate_uuid %}"
       orchestrator:
         deployment_strategy: main
-        snapshot_name: jupyter
+        image_name: jupyter
         container:
           user: root
           workdir: "/home/{{ workspace.user.name }}"
