@@ -32,8 +32,8 @@ steps:
           value: "{% generate_uuid %}"
       orchestrator:
         deployment_strategy: main
-        image_name: jupyter
         container:
+          image_name: jupyter
           user: root
           workdir: "/home/{{ workspace.user.name }}"
           mounts:
