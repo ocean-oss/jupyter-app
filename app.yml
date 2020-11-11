@@ -65,4 +65,4 @@ steps:
       ui:
         buttons:
           - label: Open Jupyter
-            url: "http://{{ engines.jupyter.networking.dns.url }}:{{ engines.jupyter.vars.port }}?token={{ engines.jupyter.vars.token }}"
+            url: "http://{{ engines.jupyter.networking.dns.url }}:{{ engines.jupyter.ports.jupyter.value }}?token={{ engines.jupyter.vars.token }}"
