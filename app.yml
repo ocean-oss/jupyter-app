@@ -15,6 +15,9 @@ steps:
           enabled: true
           default_value: 'jupyter'
           label: Jupyter URL
+        ports:
+          - name: jupyter
+            public: true
       settings:
         - name: mode
           label: Jupyter Mode
@@ -26,8 +29,6 @@ steps:
             - value: notebook
               label: 'Notebook'
       vars:
-        - name: port
-          value: "{% reserve_public_port %}"
         - name: token
           value: "{% generate_uuid %}"
       deployment:
